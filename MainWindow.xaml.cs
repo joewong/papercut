@@ -168,7 +168,7 @@ namespace Papercut
                 }
             } 
             
-            using (TextWriter f = new StreamWriter(htmlFile))
+            using (TextWriter f = new StreamWriter(htmlFile, false, mailMessageEx.BodyEncoding))
                 f.Write(htmlText);
 
 		    htmlView.Navigate(new Uri(htmlFile));
