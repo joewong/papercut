@@ -144,7 +144,7 @@ namespace Papercut.Smtp
 							foreach (int key in keys)
 							{
 								// If they have been idle for too long, disconnect them
-								if (DateTime.Now < _connections[key].LastActivity.AddMinutes(20))
+								if (DateTime.Now > _connections[key].LastActivity.AddMinutes(20))
 								{
 									Logger.Write("Session timeout, disconnecting", _connections[key].ConnectionId);
 									_connections[key].Close();

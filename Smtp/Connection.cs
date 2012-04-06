@@ -118,11 +118,12 @@ namespace Papercut.Smtp
 
 				// Receive the rest of the data
 				int bytes = connection._client.EndReceive(result);
-				connection._lastActivity = DateTime.Now;
 
 				// Ensure we received bytes
 				if (bytes > 0)
 				{
+                    connection._lastActivity = DateTime.Now;
+
 					// Check if the buffer is full of \0, usually means a disconnect
 					if (connection._receiveBuffer.Length == 64 && connection._receiveBuffer[0] == '\0')
 					{
